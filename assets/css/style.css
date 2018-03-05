@@ -1,6 +1,5 @@
 
-/* Always set the map height explicitly to define the size of the div
- * element that contains the map. */
+/* set map height/width for reference, can be adjusted by CSS team */
 #map {
   height: 400px;
   width: 500px;
