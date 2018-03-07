@@ -43,6 +43,7 @@ $('#submitBTN').on('click', function(){
                 method : 'GET'
             }).then(function(response) {
                 console.log(response)
+                console.log(response[0].object.geometry)
                 for ( var i = 0; i < response.length; i++) {
                     var marker = new google.maps.Marker({
                         map: map,
