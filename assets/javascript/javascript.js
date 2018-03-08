@@ -14,17 +14,7 @@ function initMap() {
         zoom: 15
     });     
     // console.log(initMap)
-    map.addListener('click', function(e) {
-        placeMarker(e.latLng, map);
-      });
     
-      function placeMarker(position, map) {
-        var marker = new google.maps.Marker({
-          position: position,
-          map: map
-        });  
-        map.panTo(position);
-      }
 
 
 $('#submitBTN').on('click', function(){
@@ -38,12 +28,24 @@ $('#submitBTN').on('click', function(){
     geocoder.geocode( { 'address': address}, function(results, status) {
         //if status is ok, if will set marker on location
         if (status == 'OK') {
-            console.log(results)
+            // console.log(results)
             map.setCenter(results[0].geometry.location);
 
+            map.addListener('click', function(e) {
+                placeMarker(e.latLng, map);
+              });
+            
+              function placeMarker(position, map) {
+                var marker = new google.maps.Marker({
+                  position: position,
+                  map: map
+                });  
+                map.panTo(position);
+              }
+
             newLoc = results[0].geometry.location;
-            var GMurl = 'https://crossorigin.me/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + newLoc + '&radius=' + radius + '&name=' + type + '&key=AIzaSyAOASDIikd8pGiO3vLaVh4bhuhpOr3ZAQY' 
-            console.log(GMurl);
+            var GMurl = 'https://crossorigin.me/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + newLoc + '&radius=' + radius + '&keyword=' + type + '&key=AIzaSyAOASDIikd8pGiO3vLaVh4bhuhpOr3ZAQY' 
+            // console.log(GMurl);
             var newUrl = GMurl.replace(/[()]/g, '');
             var newUrl2 = newUrl.replace(/\s+/g, '')
             console.log(newUrl2)
@@ -53,7 +55,6 @@ $('#submitBTN').on('click', function(){
                 method : 'GET'
             }).then(function(results) {
                 console.log(results)
-                console.log(results[1])
                 });
 
         //if status not ok, it will alert status
