@@ -5,6 +5,8 @@ var mapForm;
 var address;
 var radius;
 var type;
+var newLoc;
+
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
@@ -12,7 +14,18 @@ function initMap() {
         zoom: 15
     });     
     // console.log(initMap)
-}
+    map.addListener('click', function(e) {
+        placeMarker(e.latLng, map);
+      });
+    
+      function placeMarker(position, map) {
+        var marker = new google.maps.Marker({
+          position: position,
+          map: map
+        });  
+        map.panTo(position);
+      }
+
 
 $('#submitBTN').on('click', function(){
     //declare var for geocoder
@@ -27,32 +40,21 @@ $('#submitBTN').on('click', function(){
         if (status == 'OK') {
             console.log(results)
             map.setCenter(results[0].geometry.location);
-            var newLoc = results[0].geometry.location;
-            console.log(newLoc)
 
-
-            //need to get rid of parenthesis on newLoc
-            var GMurl = 'https://crossorigin.me/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + newLoc + '&radius=' + radius + '&type=' + type + '&key=AIzaSyAOASDIikd8pGiO3vLaVh4bhuhpOr3ZAQY' 
+            newLoc = results[0].geometry.location;
+            var GMurl = 'https://crossorigin.me/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + newLoc + '&radius=' + radius + '&name=' + type + '&key=AIzaSyAOASDIikd8pGiO3vLaVh4bhuhpOr3ZAQY' 
             console.log(GMurl);
             var newUrl = GMurl.replace(/[()]/g, '');
             var newUrl2 = newUrl.replace(/\s+/g, '')
             console.log(newUrl2)
-            //marker variable
+            // //marker variable
             $.ajax({
                 url : newUrl2,
                 method : 'GET'
-            }).then(function(response) {
-                console.log(response)
-                console.log(response[0].object.geometry)
-                for ( var i = 0; i < response.length; i++) {
-                    var marker = new google.maps.Marker({
-                        map: map,
-                        position: response[i].geometry.location,
-                        
-                    })
-                    console.log(response[i].geometry.location)
-                };
-            })
+            }).then(function(results) {
+                console.log(results)
+                console.log(results[1])
+                });
 
         //if status not ok, it will alert status
         } else {
@@ -60,7 +62,7 @@ $('#submitBTN').on('click', function(){
         }
     });
 })
-
+}
 
 //push recent searches
 //push
