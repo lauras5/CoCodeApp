@@ -53,10 +53,10 @@ $('#submitBTN').on('click', function(){
             $.ajax({
                 url : newUrl2,
                 method : 'GET'
-            }).then(function(results) {
-                console.log(results)
+            }).then(function(obj) {
+                console.log(obj)
+                console.log(obj.results[0])
                 });
-
         //if status not ok, it will alert status
         } else {
             alert('Geocode was not successful for the following reason: ' + status);
