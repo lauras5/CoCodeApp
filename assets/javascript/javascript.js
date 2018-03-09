@@ -121,10 +121,11 @@ $('#submitBTN').on('click', function(){
     time = $('#time').val().trim();
     languages = $('#languages').val().trim();
     message = $('#projInfo').val().trim();
-    contentString = '<p><b>' + name + '</b> Working with : '+ languages +'</b> ' +
-    'About this project : ' + message + ' ' +
-    'They will be working until ' + time + ' ' +
-    'If you would like to collaborate, click the button below.</p>' +
+    contentString = '<p><b>' + name + '</b></p>'+
+    '<p>Working with :<b> '+ languages +'</b></p> ' +
+    '<p>About this project : <b>' + message + '</b></p> ' +
+    '<p>They will be working until ' + time + '</p> ' +
+    '<p>If you would like to collaborate, click the button below.</p>' +
     // '<p><b>' + minutesUntil + '</b></p>' +
     '<button id="messanger">Contact Me About This Project!</button>';
     
@@ -149,7 +150,7 @@ $('#submitBTN').on('click', function(){
                     draggable: true,
                     position: position,
                     animation: google.maps.Animation.DROP,
-                    title: message
+                    title: name, message
                 });  
 
                 map.panTo(position);
@@ -168,6 +169,7 @@ $('#submitBTN').on('click', function(){
                     marker.setAnimation(google.maps.Animation.BOUNCE);
                     //   }
                 };
+                
             };
 
               
