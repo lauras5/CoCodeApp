@@ -11,6 +11,10 @@ var time;
 var languages;
 var message;
 
+//do countdown for pin, how long is project
+//diff between time input and now
+var now = moment().format('hh:mmA')
+console.log(now)
 function initMap() {
     // classic map, if time set click button to toggle back from dark
     // map = new google.maps.Map(document.getElementById('map'), {
@@ -116,11 +120,13 @@ $('#submitBTN').on('click', function(){
     name = $('#name').val().trim();
     time = $('#time').val().trim();
     languages = $('#languages').val().trim();
-    contentString = '<p><b>' + name + '</b>, is working on ' +
-    'a project with the following languages:'+ languages +', ' +
-    'They will be working until ' +time+' '+
+    message = $('#projInfo').val().trim();
+    contentString = '<p><b>' + name + '</b> Working with : '+ languages +'</b> ' +
+    'About this project : ' + message + ' ' +
+    'They will be working until ' + time + ' ' +
     'If you would like to collaborate, click the button below.</p>' +
-    '<button id="linkedin">Contact Me</button>'
+    // '<p><b>' + minutesUntil + '</b></p>' +
+    '<button id="messanger">Contact Me About This Project!</button>';
     
     geocoder.geocode( {'address': address}, function(results, status) {
         //if status is ok enable set marker function
@@ -128,13 +134,16 @@ $('#submitBTN').on('click', function(){
             // console.log(results)
             map.setCenter(results[0].geometry.location);
             map.addListener('click', function(e) {
-                placeMarker(e.latLng, map);
+                placeMarker(e.latLng, map)
               });
+
               var infowindow = new google.maps.InfoWindow({
                 content: contentString
               });
+
               //drop marker on click, draggable
-              function placeMarker(position, map) {
+            function placeMarker(position, map) {
+                // sets marker on click
                 var marker = new google.maps.Marker({
                     map: map,
                     draggable: true,
@@ -142,23 +151,26 @@ $('#submitBTN').on('click', function(){
                     animation: google.maps.Animation.DROP,
                     title: message
                 });  
+
                 map.panTo(position);
                 marker.addListener('click', toggleBounce);
+
                 marker.addListener('click', function() {
                   infowindow.open(map, marker);
                 });
-                  function toggleBounce() {
-                      console.log(marker)
-                      if (marker.getAnimation() !== null) {
-                          marker.setAnimation(null);
-                      } else {
-                          marker.setAnimation(google.maps.Animation.BOUNCE);
-                      }
-                  }
-              }
 
-              //set toggle to toggle when user iputs info and creates 'beacon', set time limit
-              //code not working
+                //set toggle to toggle when user iputs info and creates 'beacon'
+                function toggleBounce() {
+                    console.log(marker)
+                    //   if (marker.getAnimation() !== null) {
+                    //       marker.setAnimation(null);
+                    //   } else {
+                    marker.setAnimation(google.maps.Animation.BOUNCE);
+                    //   }
+                };
+            };
+
+              
 
 
             newLoc = results[0].geometry.location;
@@ -179,12 +191,12 @@ $('#submitBTN').on('click', function(){
         //if status not ok, it will alert status
         } else {
             alert('Geocode was not successful for the following reason: ' + status);
-        }
+        };
         //end if.else statement for on-click
     });
-})
+});
 
-}
+};
 
 //push recent searches
 //push
