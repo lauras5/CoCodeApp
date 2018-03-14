@@ -23,17 +23,17 @@ var count = 0;
 var provider = new firebase.auth.GithubAuthProvider();
 
 // onclick event for Sign In button
-$("#signInBTN").on("click", function (event) {
+$("#signInBTN").on("click", function () {
 
     // Allows user to create an account with GitHub
     provider.setCustomParameters({
         'allow_signup': 'true'
     });
-event.preventDefault()
     // Sign in popup window
     firebase.auth().signInWithPopup(provider).then(function (result) {
         // This gives you a GitHub Access Token. You can use it to access the GitHub API.
         var token = result.credential.accessToken;
+        console.log('hello there')
         // The signed-in user info.
         var user = result.user;
 
@@ -45,7 +45,6 @@ event.preventDefault()
         var email = error.email;
         // The firebase.auth.AuthCredential type that was used.
         var credential = error.credential;
-
     });
 })
 
