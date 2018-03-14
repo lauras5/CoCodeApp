@@ -1,4 +1,3 @@
-// Initialize Firebase
 var config = {
     apiKey: "AIzaSyAUT3mY8ly8eMeZ6ZJAbHlj3b_UK1KTJwo",
     authDomain: "cocode-5453e.firebaseapp.com",
@@ -23,19 +22,20 @@ var count = 0;
 var provider = new firebase.auth.GithubAuthProvider();
 
 // onclick event for Sign In button
-$("#signInBTN").on("click", function (event) {
+$("#signInBTN").on("click", function () {
+
     // Allows user to create an account with GitHub
     provider.setCustomParameters({
         'allow_signup': 'true'
     });
+
     // Sign in popup window
     firebase.auth().signInWithPopup(provider).then(function (result) {
         // This gives you a GitHub Access Token. You can use it to access the GitHub API.
         var token = result.credential.accessToken;
-        console.log('hello there')
         // The signed-in user info.
         var user = result.user;
-        
+        localStorage.setItem('name', 'true')
     }).catch(function (error) {
         // Handle Errors here.
         var errorCode = error.code;
@@ -44,7 +44,13 @@ $("#signInBTN").on("click", function (event) {
         var email = error.email;
         // The firebase.auth.AuthCredential type that was used.
         var credential = error.credential;
+
     });
+
+
+    $("#loginPage").css("display", "none");
+    $(".container").css("display", "block");
+
 })
 
 //  Track the Auth state across all your pages
@@ -57,8 +63,10 @@ var initApp = function () {
 
     // Track the Auth state across all your pages:
     firebase.auth().onAuthStateChanged(function (user) {
-        if (user) {
-            $("#profileDiv").css("display", "block");
+        if (user || localStorage.getItem('name') === 'true') {
+            $("#loginPage").css("display", "none");
+            $(".container").css("display", "block");
+            $("#profilePage").css("display", "block");
             // User is signed in.
             displayName = user.displayName;
             var email = user.email;
@@ -81,7 +89,6 @@ var initApp = function () {
                     }
 
                     Object.keys(snapshot.val()).forEach(function (keys) {
-                        console.log("display  name ==> " + snapshot.val()[keys].displayName);
                         if (snapshot.val()[keys].displayName === displayName) {
                             checker = true;
                         }
@@ -96,13 +103,67 @@ var initApp = function () {
                 });
 
                 if (count === 0) {
-                    $('#account-details').append("<div id='bio'><img src='" + photoURL + "' alt='Profile Photo' width='200px' height='200px'><br>" + displayName + "<br>" + email + "<br></div>");
+                    $('#account-details').append("<div id='bio'><img src='" + photoURL + "' alt='Profile Photo'><br>" + displayName + "<br>" + email + "<br></div>");
                 }
 
                 count = 1;
 
+
+                $("#profileLink").on("click", function () {
+                    $("#profilePage").css("display", "block");
+                    $("#mapSpace").css("display", "none");
+                    $("#jobsPage").css("display", "none");
+                    $("#messagePage").css("display", "none");
+                    $("#contactPage").css("display", "none");
+                });
+
+                $("#mapLink").on("click", function () {
+                    $("#profilePage").css("display", "none");
+                    $("#mapSpace").css("display", "block");
+                    $("#jobsPage").css("display", "none");
+                    $("#messagePage").css("display", "none");
+                    $("#contactPage").css("display", "none");
+
+                });
+
+                $("#jobsLink").on("click", function () {
+                    $("#profilePage").css("display", "none");
+                    $("#mapSpace").css("display", "none");
+                    $("#jobsPage").css("display", "block");
+                    $("#messagePage").css("display", "none");
+                    $("#contactPage").css("display", "none");
+
+                });
+                $("#messagingLink").on("click", function () {
+                    $("#profilePage").css("display", "none");
+                    $("#mapSpace").css("display", "none");
+                    $("#jobsPage").css("display", "none");
+                    $("#messagePage").css("display", "block");
+                    $("#contactPage").css("display", "none");
+                });
+                $("#contactLink").on("click", function () {
+                    $("#profilePage").css("display", "none");
+                    $("#mapSpace").css("display", "none");
+                    $("#jobsPage").css("display", "none");
+                    $("#messagePage").css("display", "none");
+                    $("#contactPage").css("display", "block");
+                });
+
             });
-        } 
+        } else {
+            // User is signed out.
+            $("#loginPage").css("display", "block");
+            $(".container").css("display", "none");
+            $("#profilePage").css("display", "none");
+            $("#mapSpace").css("display", "none");
+            $("#jobsPage").css("display", "none");
+            $("#messagePage").css("display", "none");
+            $("#contactPage").css("display", "none");
+
+            // Adds login button again
+
+
+        }
     }, function (error) {
         console.log(error);
     });

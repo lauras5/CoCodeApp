@@ -1,4 +1,3 @@
-
 var map;
 var marker;
 var mapForm;
@@ -12,8 +11,8 @@ var languages;
 var message;
 var location;
 var state;
-var country;
 var keyword;
+var mapData = database.ref("/map")
 
 //momentjs is for items on wishlist
 var now = moment().format('hh:mmA')
@@ -223,17 +222,25 @@ function initMap() {
       '<p>If you would like to collaborate, click the button below.</p>' +
       '<button id="messanger">Join Chatroom for this Project!</button>';
 
+    //changes address from zip code, physical address to lat/lang coordinates
     geocoder.geocode({ 'address': address }, function (results, status) {
       //if status is ok enable set marker function
       if (status == 'OK') {
-        // console.log(results)
+        console.log(results)
         map.setCenter(results[0].geometry.location);
         newLoc = results[0].geometry.location;
         var GMurl = 'https://crossorigin.me/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + newLoc + '&radius=' + radius + '&opennow=true&keyword=' + type + '&key=AIzaSyAOASDIikd8pGiO3vLaVh4bhuhpOr3ZAQY'
+        // needed to remove parenthesis and spaces from url to work
         var newUrl = GMurl.replace(/[()]/g, '');
         var newUrl2 = newUrl.replace(/\s+/g, '');
         console.log(newUrl2)
 
+        mapData.push({
+          location: address,
+          results: results,
+        })
+
+        // AJAX method 
         $.ajax({
           url: newUrl2,
           method: 'GET'
@@ -248,7 +255,7 @@ function initMap() {
             //gets name of location
             var objDesc = object.results[i].name
             //appends to bottom of page to create list of nearby locations
-            var objName = $('<div id="obj"><img src="' + icon + '" width="100px" height="100px"> ' + objDesc + '</div><br>')
+            var objName = $('<div id="obj"><img src="' + icon + '" width="100px" height="100px"> ' + objDesc + '</div><div>'+object.results[i].geometry.location+'</div><br>')
             $('#lists').append(objName);
 
             function createMarker(place) {
@@ -338,73 +345,27 @@ $('#jobSearchBTN').on('click', function () {
       $('.jobArr').append(jobList)
     }
   })
-
 })
 
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
   document.getElementById("main").style.marginLeft = "250px";
   var x = document.getElementById("coolButton");
-  if (x.style.display = "none") {
+  if (x.style.display === "none") {
     x.style.display = "block";
   } else {
     x.style.display = "none";
   }
-
 }
 
 function closeNav() {
   document.getElementById("mySidenav").style.width = "0";
   document.getElementById("main").style.marginLeft = "0";
   var x = document.getElementById("coolButton");
-  if (x.style.display = "block") {
+  if (x.style.display === "block") {
     x.style.display = "initial";
   } else {
     x.style.display = "initial";
   }
 }
 
-$("#profileLink").on('click', function () {
-  console.log('hello')
-  $('#profilePage').css('display', 'block')
-  $('#mapSpace').css('display', 'none')
-  $('#jobsPage').css('display', 'none')
-  $('#messagePage').css('display', 'none')
-  $('#contactPage').css('display', 'none')
-})
-
-$("#jobsLink").on('click', function () {
-  console.log('hello')
-  $('#jobsPage').css('display', 'block')
-  $('#mapSpace').css('display', 'none')
-  $('#profilePage').css('display', 'none')
-  $('#messagePage').css('display', 'none')
-  $('#contactPage').css('display', 'none')
-})
-
-$("#mapLink").on('click', function () {
-  console.log('hello')
-  $('#mapSpace').css('display', 'block')
-  $('#jobsPage').css('display', 'none')
-  $('#profilePage').css('display', 'none')
-  $('#messagePage').css('display', 'none')
-  $('#contactPage').css('display', 'none')
-})
-
-$("#messageLink").on('click', function () {
-  console.log('hello')
-  $('#messagePage').css('display', 'block')
-  $('#mapSpace').css('display', 'none')
-  $('#jobsPage').css('display', 'none')
-  $('#profilePage').css('display', 'none')
-  $('#contactPage').css('display', 'none')
-})
-
-$("#contactLink").on('click', function () {
-  console.log('hello')
-  $('#contactPage').css('display', 'block')
-  $('#messagePage').css('display', 'none')
-  $('#mapSpace').css('display', 'none')
-  $('#jobsPage').css('display', 'none')
-  $('#profilePage').css('display', 'none')
-})
