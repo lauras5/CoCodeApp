@@ -108,7 +108,7 @@ var initApp = function () {
 
                 count = 1;
 
-
+                // on click functions to change display on pages that arent active
                 $("#profileLink").on("click", function () {
                     $("#profilePage").css("display", "block");
                     $("#mapSpace").css("display", "none");
@@ -123,7 +123,6 @@ var initApp = function () {
                     $("#jobsPage").css("display", "none");
                     $("#messagePage").css("display", "none");
                     $("#contactPage").css("display", "none");
-
                 });
 
                 $("#jobsLink").on("click", function () {
@@ -132,8 +131,8 @@ var initApp = function () {
                     $("#jobsPage").css("display", "block");
                     $("#messagePage").css("display", "none");
                     $("#contactPage").css("display", "none");
-
                 });
+
                 $("#messagingLink").on("click", function () {
                     $("#profilePage").css("display", "none");
                     $("#mapSpace").css("display", "none");
@@ -141,6 +140,7 @@ var initApp = function () {
                     $("#messagePage").css("display", "block");
                     $("#contactPage").css("display", "none");
                 });
+
                 $("#contactLink").on("click", function () {
                     $("#profilePage").css("display", "none");
                     $("#mapSpace").css("display", "none");
@@ -148,7 +148,6 @@ var initApp = function () {
                     $("#messagePage").css("display", "none");
                     $("#contactPage").css("display", "block");
                 });
-
             });
         } else {
             // User is signed out.

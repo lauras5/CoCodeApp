@@ -273,8 +273,7 @@ function initMap() {
                 content: "<div id='place'><b>" + objDesc + "</b></div>" +
                   "<div id='located'>" + object.results[i].vicinity + " </div>" +
                   "<div id='rating'>Rating: " + object.results[i].rating + "/5 </div>" +
-                  "<input id='chatroom' type='text-box' placeholder='join chatroom'>" +
-                  "<button id='messageBtn'>Message</button>" +
+                  "<button id='messageBtn'>Go To Chatroom</button>" +
                   contentString
               });
 
@@ -283,9 +282,12 @@ function initMap() {
                 //opens info window on click
                 infowindow.open(map, marker);
                 //allows user to type into textbox and appends to chat
-                $('#chat').on('click', function () {
-                  var convo = $("#chatroom").val();
-                  $("#convoBox").append("<p>" + convo + "</p>")
+                $('#messageBtn').on('click', function () {
+                    $("#profilePage").css("display", "none");
+                    $("#mapSpace").css("display", "none");
+                    $("#jobsPage").css("display", "none");
+                    $("#messagePage").css("display", "block");
+                    $("#contactPage").css("display", "none");
                 });
               });
             };

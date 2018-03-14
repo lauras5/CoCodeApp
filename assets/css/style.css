@@ -2,13 +2,19 @@
 
 /* Always set the map height explicitly to define the size of the div
  * element that contains the map. */
-
 #map {
   height: 500px;
   width: 750px;
   margin: 20px;
 }
 
+#loginPage {
+  background-image: url('../images/back1.jpeg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  height: 800px;
+}
 .jumbotron {
   width: 100%;
   text-align: center;
@@ -60,10 +66,20 @@ body {
   margin-left: 50px;
 }
 
+#signInBTN {
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  display: block;
+  margin: auto;
+}
+
 #main {
   background-color:#111;
   transition: margin-left .5s;
-  padding: 16px;
   margin-bottom: 20px;
 }
 
@@ -84,20 +100,29 @@ p {
   width: auto;
   margin-bottom: 2px;
 }
+
 .message-inner {
   display: inline-block;
   padding: 8px 16px;
   background-color: rgb(232, 232, 232);
   border-radius: 100px;
 }
+
 .message.from-me{
   text-align: right;
 }
+
 .message.from-me .message-inner {
   background-color: blue;
   color: #fff;
 }
 
+footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
 
 @media screen and (max-height: 450px) {
 .sidenav {padding-top: 15px;}
