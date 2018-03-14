@@ -52,7 +52,6 @@ $("#signInBTN").on("click", function (event) {
     event.preventDefault()
 })
 
-event.preventDefault()
 //  Track the Auth state across all your pages
 var initApp = function () {
 
@@ -152,20 +151,9 @@ var initApp = function () {
                     $('#jobsPage').css('display', 'none')
                     $('#profilePage').css('display', 'none')
                   })
-                  
-
-
 
             });
-        } else {
-            // User is signed out.
-            $("#messageDiv").css("display", "none");
-            $("#profileDiv").css("display", "none");
-
-            // Adds login button again
-
-
-        }
+        } 
     }, function (error) {
         console.log(error);
     });
