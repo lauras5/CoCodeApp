@@ -24,7 +24,7 @@ var provider = new firebase.auth.GithubAuthProvider();
 
 // onclick event for Sign In button
 $("#signInBTN").on("click", function () {
-
+    event.preventDefault()
     // Allows user to create an account with GitHub
     provider.setCustomParameters({
         'allow_signup': 'true'
@@ -103,17 +103,51 @@ var initApp = function () {
 
                 count = 1;
 
-                $("#messagingLink").on("click", function () {
-                    $("#profileDiv").css("display", "none");
-                    $("#messageDiv").css("display", "block");
-                });
-
-
-                $("#profileLink").on("click", function () {
-                    $("#profileDiv").css("display", "block");
-                    $("#messageDiv").css("display", "none");
-
-                });
+                $("#profileLink").on('click', function(){
+                    console.log('hello')
+                    $('#profilePage').css('display', 'block')
+                    $('#mapSpace').css('display', 'none')
+                    $('#jobsPage').css('display', 'none')
+                    $('#messagingPage').css('display', 'none')
+                    $('#contactPage').css('display', 'none')
+                  })
+                  
+                  $("#jobsLink").on('click', function(){
+                    console.log('hello')
+                    $('#jobsPage').css('display', 'block')
+                    $('#mapSpace').css('display', 'none')
+                    $('#profilePage').css('display', 'none')
+                    $('#messagingPage').css('display', 'none')
+                    $('#contactPage').css('display', 'none')
+                  })
+                  
+                  $("#mapLink").on('click', function(){
+                    console.log('hello')
+                    $('#mapSpace').css('display', 'block')
+                    $('#jobsPage').css('display', 'none')
+                    $('#profilePage').css('display', 'none')
+                    $('#messagingPage').css('display', 'none')
+                    $('#contactPage').css('display', 'none')
+                  })
+                  
+                  $("#messageLink").on('click', function(){
+                    console.log('hello')
+                    $('#messagingPage').css('display', 'block')
+                    $('#mapSpace').css('display', 'none')
+                    $('#jobsPage').css('display', 'none')
+                    $('#profilePage').css('display', 'none')
+                    $('#contactPage').css('display', 'none')
+                  })
+                  
+                  $("#contactLink").on('click', function(){
+                    console.log('hello')
+                    $('#contactPage').css('display', 'block')
+                    $('#messagingPage').css('display', 'none')
+                    $('#mapSpace').css('display', 'none')
+                    $('#jobsPage').css('display', 'none')
+                    $('#profilePage').css('display', 'none')
+                  })
+                  
 
 
 
