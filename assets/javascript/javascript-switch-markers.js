@@ -366,7 +366,80 @@ function closeNav() {
 
 $("#profileLink").on('click', function(){
   console.log('hello')
+  $('#profilePage').css('display', 'block')
+  $('#mapSpace').css('display', 'none')
+  $('#jobsPage').css('display', 'none')
+  $('#messagingPage').css('display', 'none')
+  $('#contactPage').css('display', 'none')
 })
+
+$("#jobsLink").on('click', function(){
+  console.log('hello')
+  $('#jobsPage').css('display', 'block')
+  $('#mapSpace').css('display', 'none')
+  $('#profilePage').css('display', 'none')
+  $('#messagingPage').css('display', 'none')
+  $('#contactPage').css('display', 'none')
+})
+
+$("#mapLink").on('click', function(){
+  console.log('hello')
+  $('#mapSpace').css('display', 'block')
+  $('#jobsPage').css('display', 'none')
+  $('#profilePage').css('display', 'none')
+  $('#messagingPage').css('display', 'none')
+  $('#contactPage').css('display', 'none')
+})
+
+$("#messageLink").on('click', function(){
+  console.log('hello')
+  $('#messagingPage').css('display', 'block')
+  $('#mapSpace').css('display', 'none')
+  $('#jobsPage').css('display', 'none')
+  $('#profilePage').css('display', 'none')
+  $('#contactPage').css('display', 'none')
+})
+
+$("#contactLink").on('click', function(){
+  console.log('hello')
+  $('#contactPage').css('display', 'block')
+  $('#messagingPage').css('display', 'none')
+  $('#mapSpace').css('display', 'none')
+  $('#jobsPage').css('display', 'none')
+  $('#profilePage').css('display', 'none')
+})
+
+var chatData = database.ref("/chat");
+function ChatUserInput(event) {
+    event.preventDefault();
+
+    if ($("#chat-input").val() !== "") {
+
+        var message = $("#chat-input").val();
+
+        chatData.push({
+            displayName: displayName,
+            userID: uid,
+            message: message,
+            time: firebase.database.ServerValue.TIMESTAMP,
+        });
+
+        $("#chat-input").val("");
+    }
+}
+
+// CHAT LISTENERS
+// Chat send button listener, grabs input and pushes to firebase. (Firebase's push automatically creates a unique key)
+$("#chat-send").on("click", function (event) {
+    ChatUserInput(event);
+});
+
+
+chatData.on("child_added", function (snapshot) {
+    var msg = snapshot.val();
+    console.log(msg)
+    $("#chat-messages").append(msg.displayName + " :  " + msg.message + "  | " + moment(msg.time).format("hh:mm") + "<br>")
+});
 
 //what do we want to push??
 

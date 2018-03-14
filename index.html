@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <script src="https://cdn.firebase.com/libs/firebaseui/2.6.2/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.6.2/firebaseui.css" />
     <title>Map</title>
 </head>
 
@@ -33,7 +35,7 @@
            
         <div  id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
-<div id="map" style="display: none">        
+<div id="mapSpace" class='pageLinks' style="display: none">        
         <div class="row">
             <div class="col-md">
                 <div class="form">
@@ -86,7 +88,7 @@
     </div>
 </div>
 <!-- end of #map -->
-<div id="jobs" style="display: none;">
+<div id="jobsPage" class='pageLinks' style="display: none;">
     <div class="row">
         <div class="jumbotron">
             <h1>JOB SEARCH</h1>
@@ -113,6 +115,24 @@
         
 </div>
 
+<!-- start profile page -->
+<div id="profilePage" style="display: block;">
+    <div id="account-details"></div>
+</div>
+<!-- end profile page -->
+
+<!-- start message page -->
+<div id="messagePage" style="display: none;">
+    <div id="chat-messages"></div>
+        <form>
+            <input id="chat-input" type="text">
+            <button id="chat-send">Enter</button>
+        </form>
+    </div>
+
+    <button id="signOutBTN">Sign Out</button>
+    <!-- <button id="signInBTN">Sign In</button> -->
+
     <div class="row">
         <footer class="footer">
             <div class="container">
@@ -128,11 +148,12 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOASDIikd8pGiO3vLaVh4bhuhpOr3ZAQY&callback=initMap"
     async defer></script>
     <!-- script for Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
     <!-- script tag for JS file -->
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <!-- script tag for momentjs -->
-    <!-- <script src='assets/javascript/javascript.js'></script> -->
+    <script src="assets/javascript/script.js"></script>
+    <!-- <script src="assets/javascript/messaging.js"></script> -->
     <script src='assets/javascript/javascript-switch-markers.js'></script>
 </body>
 </html>
