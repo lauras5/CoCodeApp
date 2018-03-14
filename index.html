@@ -39,6 +39,14 @@
 
         <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
+
+            <!-- start profile page -->
+            <div id="profilePage" style="display: block;">
+                <div id="account-details"></div>
+            </div>
+            <!-- end profile page -->
+            
+            <!-- start map page -->
             <div id="mapSpace" class='pageLinks' style="display: none">
                 <div class="row">
                     <div class="col-md">
@@ -49,14 +57,10 @@
                                 <label for="address">Enter Zip Code: </label>
                                 <input type="text" class="form-control" id="address">
                             </div>
-                            <!-- <div class="form-group">
-                        <label for="type">Type : </label>
-                        <input type="text" class="form-control" id="type" placeholder="restaurant, coffee, etc.">
-                    </div> -->
+                           
                             <div class="text">My Info</div>
                             <br>
                             <div class="form-group">
-                                <!-- get name via linkedin -->
                                 <label for="name"> Name :</label>
                                 <input type="text" class="form-control" id="name" placeholder="James">
                             </div>
@@ -72,7 +76,6 @@
                                 <label for="radius"> Project Info : </label>
                                 <input type="textbox" class="form-control" id="projInfo" placeholder="Explain the project...">
                             </div>
-                            <!-- add contact info to message via linkedin-->
 
                             <button type='submit' value='Encode' id='submitBTN'>Search</button>
                         </div>
@@ -91,7 +94,9 @@
                 </div>
             </div>
         </div>
-        <!-- end of #map -->
+        <!-- end of map page -->
+
+        <!-- start job search page -->
         <div id="jobsPage" class='pageLinks' style="display: none;">
             <div class="row">
                 <div class="jumbotron">
@@ -117,14 +122,8 @@
                     <div class="jobArr"></div>
                 </div>
             </div>
-
         </div>
-
-        <!-- start profile page -->
-        <div id="profilePage" style="display: block;">
-            <div id="account-details"></div>
-        </div>
-        <!-- end profile page -->
+        <!-- end job search page -->
 
         <!-- start message page -->
         <div id="messagePage" style="display: none;">
