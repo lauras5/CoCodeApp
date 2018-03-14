@@ -364,4 +364,47 @@ function closeNav() {
   } 
 }
 
+$("#profileLink").on('click', function(){
+  console.log('hello')
+  $('#profilePage').css('display', 'block')
+  $('#mapSpace').css('display', 'none')
+  $('#jobsPage').css('display', 'none')
+  $('#messagingPage').css('display', 'none')
+  $('#contactPage').css('display', 'none')
+})
 
+$("#jobsLink").on('click', function(){
+  console.log('hello')
+  $('#jobsPage').css('display', 'block')
+  $('#mapSpace').css('display', 'none')
+  $('#profilePage').css('display', 'none')
+  $('#messagingPage').css('display', 'none')
+  $('#contactPage').css('display', 'none')
+})
+
+$("#mapLink").on('click', function(){
+  console.log('hello')
+  $('#mapSpace').css('display', 'block')
+  $('#jobsPage').css('display', 'none')
+  $('#profilePage').css('display', 'none')
+  $('#messagingPage').css('display', 'none')
+  $('#contactPage').css('display', 'none')
+})
+
+$("#messageLink").on('click', function(){
+  console.log('hello')
+  $('#messagingPage').css('display', 'block')
+  $('#mapSpace').css('display', 'none')
+  $('#jobsPage').css('display', 'none')
+  $('#profilePage').css('display', 'none')
+  $('#contactPage').css('display', 'none')
+})
+
+$("#contactLink").on('click', function(){
+  console.log('hello')
+  $('#contactPage').css('display', 'block')
+  $('#messagingPage').css('display', 'none')
+  $('#mapSpace').css('display', 'none')
+  $('#jobsPage').css('display', 'none')
+  $('#profilePage').css('display', 'none')
+})
