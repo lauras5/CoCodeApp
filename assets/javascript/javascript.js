@@ -10,6 +10,7 @@ var name;
 var time;
 var languages;
 var message;
+var markerNum = 0;
 
 //do countdown for pin, how long is project
 //diff between time input and now
@@ -104,99 +105,113 @@ function initMap() {
             stylers: [{color: '#17263c'}]
           }
         ]
-      }); 
-    // console.log(initMap)
+    }); 
+
+    $('#submitBTN').on('click', function(){
+        //declare var for geocoder
+        var geocoder= new google.maps.Geocoder();
+        //takes input value from address field
+        address = $('#address').val().trim();
+        radius = '5000'
+        type = 'starbucks|panera|mcdonalds|barnesandnoble|arbys|applebees|brewsterscoffee|cariboucoffee|chickfila|cornerbakery|dunkindonuts|ihop|burgerking|leessandwiches|peetscoffee|tullyscoffee|wendys'
+        // $('#type').val().trim();
+        name = $('#name').val().trim();
+        time = $('#time').val().trim();
+        languages = $('#languages').val().trim();
+        message = $('#projInfo').val().trim();
+        contentString = '<p><b>' + name + '</b></p>'+
+        '<p>Working with :<b> '+ languages +'</b></p> ' +
+        '<p>About this project : <b>' + message + '</b></p> ' +
+        '<p>They will be working until ' + time + '</p> ' +
+        '<p>If you would like to collaborate, click the button below.</p>' +
+        //create minutes until it is deleted
+        // '<p><b>' + minutesUntil + '</b></p>' +
+        '<button id="messanger">Contact Me About This Project!</button>';
     
-
-
-$('#submitBTN').on('click', function(){
-    //declare var for geocoder
-    var geocoder= new google.maps.Geocoder();
-    //takes input value from address field
-    address = $('#address').val().trim();
-    radius = '5000'
-    // $('#radius').val().trim();
-    type = $('#type').val().trim();
-    name = $('#name').val().trim();
-    time = $('#time').val().trim();
-    languages = $('#languages').val().trim();
-    message = $('#projInfo').val().trim();
-    contentString = '<p><b>' + name + '</b></p>'+
-    '<p>Working with :<b> '+ languages +'</b></p> ' +
-    '<p>About this project : <b>' + message + '</b></p> ' +
-    '<p>They will be working until ' + time + '</p> ' +
-    '<p>If you would like to collaborate, click the button below.</p>' +
-    // '<p><b>' + minutesUntil + '</b></p>' +
-    '<button id="messanger">Contact Me About This Project!</button>';
-    
-    geocoder.geocode( {'address': address}, function(results, status) {
-        //if status is ok enable set marker function
-        if (status == 'OK') {
-            // console.log(results)
-            map.setCenter(results[0].geometry.location);
-            map.addListener('click', function(e) {
-                placeMarker(e.latLng, map)
-              });
-
-              var infowindow = new google.maps.InfoWindow({
-                content: contentString
-              });
-
-              //drop marker on click, draggable
-            function placeMarker(position, map) {
-                // sets marker on click
-                var marker = new google.maps.Marker({
-                    map: map,
-                    draggable: true,
-                    position: position,
-                    animation: google.maps.Animation.DROP,
-                    title: name, message
-                });  
-
-                map.panTo(position);
-                marker.addListener('click', toggleBounce);
-
-                marker.addListener('click', function() {
-                  infowindow.open(map, marker);
+        geocoder.geocode( {'address': address}, function(results, status) {
+            //if status is ok enable set marker function
+            if (status == 'OK') {
+                // console.log(results)
+                map.setCenter(results[0].geometry.location);
+                map.addListener('click', function(e) {
+                    placeMarker(e.latLng, map)
                 });
 
-                //set toggle to toggle when user iputs info and creates 'beacon'
-                function toggleBounce() {
-                    console.log(marker)
-                    //   if (marker.getAnimation() !== null) {
-                    //       marker.setAnimation(null);
-                    //   } else {
-                    marker.setAnimation(google.maps.Animation.BOUNCE);
-                    //   }
+                var infowindow = new google.maps.InfoWindow({
+                   content: contentString
+                });
+
+                //drop marker on click, draggable
+                function placeMarker(position, map) {
+                    // sets marker on click
+                    var marker = new google.maps.Marker({
+                        map: map,
+                        draggable: true,
+                        position: position,
+                        animation: google.maps.Animation.DROP,
+                        title: name
+                    });  
+
+                    markerNum++
+                    console.log(markerNum)
+                    
+                    //pans to center of position
+                    map.panTo(position);
+                    //add listeners for toggle and window function
+                    marker.addListener('click', toggleBounce);
+                    marker.addListener('click', function() {
+                      infowindow.open(map, marker);
+                    });
+
+                    //set toggle to toggle when user iputs info and creates 'beacon'
+                    function toggleBounce() {
+                        //if marker is set to Bounce, set to null, if set to null, bounce
+                        if (marker.getAnimation() !== null) {
+                            marker.setAnimation(null);
+                        } else {
+                            marker.setAnimation(google.maps.Animation.BOUNCE);
+                        }
+                    };  
                 };
-                
+
+                if (markerNum === 1) {
+                  console.log('hello')
+                }
+
+                newLoc = results[0].geometry.location;
+                var GMurl = 'https://crossorigin.me/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + newLoc + '&radius=' + radius + '&keyword=' + type + '&key=AIzaSyAOASDIikd8pGiO3vLaVh4bhuhpOr3ZAQY' 
+                // console.log(GMurl);
+                var newUrl = GMurl.replace(/[()]/g, '');
+                var newUrl2 = newUrl.replace(/\s+/g, '')
+                console.log(newUrl2)
+                // //marker variable
+                $.ajax({
+                    url : newUrl2,
+                    method : 'GET'
+                }).then(function(object) {
+                    console.log(object)
+                    var listView = $('<div id="lists">Nearby Locations : </div>')
+                    $('#list').append(listView)
+                    var resultsLength = object.results.length 
+                    for (var i = 0; i < resultsLength; i++) {
+                      var icon = object.results[i].icon
+                      var objName = $('<div id="obj"><img src="' + icon + '"> ' + object.results[i].name + '</div><br>')
+                      $('#lists').append(objName)
+                      console.log(objName)
+                      
+                      //returns undefined, ask Quinton on Sat
+                      // var objLocation = object.results[i].geometry.location
+                      // console.log(objlocation)
+                      //place icon on location instead of marker
+                    } 
+                  });
+            //if status not ok, it will alert status
+            } else {
+                alert('Geocode was not successful for the following reason: ' + status);
             };
-
-              
-
-
-            newLoc = results[0].geometry.location;
-            var GMurl = 'https://crossorigin.me/https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=' + newLoc + '&radius=' + radius + '&keyword=' + type + '&key=AIzaSyAOASDIikd8pGiO3vLaVh4bhuhpOr3ZAQY' 
-            // console.log(GMurl);
-            var newUrl = GMurl.replace(/[()]/g, '');
-            var newUrl2 = newUrl.replace(/\s+/g, '')
-            console.log(newUrl2)
-            // //marker variable
-            $.ajax({
-                url : newUrl2,
-                method : 'GET'
-            }).then(function(obj) {
-                console.log(obj)
-                console.log(obj.results[0])
-                //create for loop, create custom marker for all places in range of search, create array of restaurants and drop in carousel.
-                });
-        //if status not ok, it will alert status
-        } else {
-            alert('Geocode was not successful for the following reason: ' + status);
-        };
         //end if.else statement for on-click
+        });
     });
-});
 
 };
 
