@@ -23,13 +23,13 @@ var count = 0;
 var provider = new firebase.auth.GithubAuthProvider();
 
 // onclick event for Sign In button
-$("#signInBTN").on("click", function () {
+$("#signInBTN").on("click", function (event) {
 
     // Allows user to create an account with GitHub
     provider.setCustomParameters({
         'allow_signup': 'true'
     });
-
+event.preventDefault()
     // Sign in popup window
     firebase.auth().signInWithPopup(provider).then(function (result) {
         // This gives you a GitHub Access Token. You can use it to access the GitHub API.
