@@ -345,7 +345,7 @@ function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
   document.getElementById("main").style.marginLeft = "250px";
   var x = document.getElementById("coolButton");
-  if (x.style.display === "none") {
+  if (x.style.display = "none") {
       x.style.display = "block";
   } else {
       x.style.display = "none";

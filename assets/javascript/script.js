@@ -24,12 +24,10 @@ var provider = new firebase.auth.GithubAuthProvider();
 
 // onclick event for Sign In button
 $("#signInBTN").on("click", function (event) {
-    event.preventDefault()
     // Allows user to create an account with GitHub
     provider.setCustomParameters({
         'allow_signup': 'true'
     });
-    event.preventDefault()
     // Sign in popup window
     firebase.auth().signInWithPopup(provider).then(function (result) {
         // This gives you a GitHub Access Token. You can use it to access the GitHub API.
@@ -38,7 +36,6 @@ $("#signInBTN").on("click", function (event) {
         // The signed-in user info.
         var user = result.user;
         
-        event.preventDefault()
     }).catch(function (error) {
         // Handle Errors here.
         var errorCode = error.code;
@@ -47,9 +44,7 @@ $("#signInBTN").on("click", function (event) {
         var email = error.email;
         // The firebase.auth.AuthCredential type that was used.
         var credential = error.credential;
-        event.preventDefault()
     });
-    event.preventDefault()
 })
 
 //  Track the Auth state across all your pages
@@ -102,7 +97,7 @@ var initApp = function () {
                 });
 
                 if (count === 0) {
-                    $('#account-details').append("<div id='bio'><img src='" + photoURL + "' alt='Profile Photo'><br>" + displayName + "<br>" + email + "<br></div>");
+                    $('#account-details').append("<div id='bio'><img src='" + photoURL + "' alt='Profile Photo' width='200px' height='200px'><br>" + displayName + "<br>" + email + "<br></div>");
                 }
 
                 count = 1;
