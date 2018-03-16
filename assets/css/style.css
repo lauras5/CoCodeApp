@@ -1,4 +1,146 @@
+body {
+  height: 100%;
+  width: 100%;
+  background-image: url('../images/login-background3.jpg');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  z-index: -2; 
+  font-family: "Roboto", sans-serif;
+}
 
+#messagesArea {
+  display: block;
+  margin: auto;
+}
+
+#submitBTN {
+  display: block;
+  margin: auto;
+  margin-top: 2%;
+}
+
+#about {
+  background-color: #000000bd;
+  padding: 10px;
+  color: white;
+  width: 100%;
+  border: 5px solid black;
+}
+
+#bio {
+  text-align: center;
+}
+
+img {
+  /* vertical-align: middle; */
+  border-style: none;
+  padding: 20px;
+  width: 300px;
+  display: block;
+  margin: auto;
+}
+
+#account-details {
+  background-color: rgba(255, 255, 255, 0.753);
+  padding: 20px;
+  width: 50%;
+  display: block;
+  margin: auto;
+}
+
+#loginPage {
+  width:100%;
+  height: 100%;
+  content: "";
+}
+
+#title {
+  color: rgb(63, 62, 62);
+  font-size: 70px;
+  text-shadow: 3px 3px 3px #566a7c;
+  font-family: 'Julius Sans One', cursive;
+  font-weight: bold;
+}
+  
+#loginJumbo {
+  background-color: rgba(255, 255, 255, 0.75);
+  width: 100%;
+  height: 180px;
+  display: block;
+  margin: auto;
+  margin-top: 10%;
+}
+  
+.hbtn {
+  box-shadow: 3px 3px 3px #363636;
+  position: relative;
+  box-sizing: border-box;
+  display: inline-block;
+  overflow: hidden;
+  padding: 10px 20px;
+  margin: 0px 3px 6px;
+  text-align: center;
+  border: 5px solid rgb(255, 255, 255);
+  background-color: #4b5b80;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  white-space: nowrap;
+  z-index: 0;
+  font-family: 'Julius Sans One', cursive;
+} 
+
+.hbtn i {
+  padding-right: 8px;
+} 
+
+.hb-border-off3 {
+  border-color: rgb(255, 255, 255);
+  transition-duration: 0.3s;
+  transition: border-top-color 0.1s linear 0s, border-right-color 0.1s linear 0.07s, border-bottom-color 0.1s linear 0.14s, border-left-color 0.1s linear 0.21s;
+} 
+
+.hb-border-off3:hover {
+  border-color: initial;
+  border-color: transparent;
+  transition: border-top-color 0.1s linear 0s, border-right-color 0.1s linear 0.07s, border-bottom-color 0.1s linear 0.14s, border-left-color 0.1s linear 0.21s;
+} 
+
+#profilePage::after, #mapSpace::after, #jobsPage::after, #messagePage::after, #contentPage::after {
+  content: "";
+  background-image: url('../images/profile-background2.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  opacity: 1;
+  position: absolute;
+  z-index: -1;   
+  color: #fff;
+}
+
+#chat-input {
+  width: 100%;
+  line-height: 30px;
+}
+
+#chat-send {
+  background-color:#0000007d;
+  padding: 10px;
+  display:block;
+  margin: auto;
+  color: white;
+  margin-top:2%;
+}
+
+#chat-messages-all {
+  color: #fff;
+  background-color: #0000007d;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px
+}
 
 /* Always set the map height explicitly to define the size of the div
  * element that contains the map. */
@@ -6,29 +148,25 @@
   height: 500px;
   width: 750px;
   margin: 20px;
+  border: 6px solid white;
 }
-
-#loginPage {
-  background-image: url('../images/back1.jpeg');
-  background-size: cover;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  height: 800px;
-}
+  
 .jumbotron {
   width: 100%;
   text-align: center;
   margin-top: 5%;
 }
 
+#contact-image {
+  height: 150px; 
+  width: 150px;
+  border-radius: 1000px;
+}
+  
 .card {
   display: inline-block;
   margin: 10px;
   width: 345px;
-}
-
-body {
-  font-family: "Roboto", sans-serif;
 }
 
 .sidenav {
@@ -43,7 +181,7 @@ body {
   transition: 0.5s;
   padding-top: 60px;
 }
-
+  
 .sidenav p {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
@@ -52,12 +190,12 @@ body {
   display: block;
   transition: 0.3s;
 }
-
+  
 .sidenav p:hover {
   color: #f1f1f1;
   cursor: pointer;
 }
-
+  
 .sidenav .closebtn {
   position: absolute;
   top: 0;
@@ -65,35 +203,55 @@ body {
   font-size: 36px;
   margin-left: 50px;
 }
-
-#signInBTN {
-  background-color: black;
+  
+#main {
+  background-color:#111;
+  transition: margin-left .5s;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+  
+.hamburger {
   color: white;
-  font-weight: bold;
-  padding: 10px;
-  border-radius: 5px;
-  border: none;
+}
+  
+#contact-section {
+  background-color: rgba(255, 255, 255, 0.747);
+  padding: 20px;
+  text-align: center;
+  text-align: justify;
+  margin-bottom: 5%;
+}
+
+.form-group {
   display: block;
   margin: auto;
 }
 
-#main {
-  background-color:#111;
-  transition: margin-left .5s;
-  margin-bottom: 20px;
+#place-icon {
+  width: 75px;
+  height:75px;
 }
 
-.hamburger {
-  color: white;
+#lists {
+  border: 5px solid #7b9eb0;
+  border-radius: 5px;
+
+}
+.text {
+  text-align: center;
+  font-weight: bold;
+  font-size: 22px;
+  color: #4b5b80;
+  font-family: 'Julius Sans One';
 }
 
-.img-circle {
-  border-radius: 1000px;
-}
-
-p {
-  width: 480px;
-  text-align: left;
+.form {
+  background-color: rgba(255, 255, 255, 0.753);
+  padding: 20px;
+  height: 100%;
+  width: 290px;
+  border-radius: 6px;
 }
 
 .message{
@@ -117,14 +275,7 @@ p {
   color: #fff;
 }
 
-footer {
-  background-color: black;
-  color: white;
-  text-align: center;
-  padding: 10px;
-}
-
 @media screen and (max-height: 450px) {
-.sidenav {padding-top: 15px;}
-.sidenav a {font-size: 18px;}
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
 }
