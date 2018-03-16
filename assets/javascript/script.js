@@ -1,3 +1,4 @@
+// Initialize Firebase
 var config = {
     apiKey: "AIzaSyAUT3mY8ly8eMeZ6ZJAbHlj3b_UK1KTJwo",
     authDomain: "cocode-5453e.firebaseapp.com",
@@ -17,9 +18,17 @@ var uid = "";
 var photoURL = "";
 var count = 0;
 
+localStorage.setItem("count", "0");
 
 // Creates an instance of the GitHub provider object
 var provider = new firebase.auth.GithubAuthProvider();
+
+if(localStorage.getItem("count") == 0) {
+    $("#loginPage").css("display", "block");
+    localStorage.setItem("count", "1");
+}
+
+
 
 // onclick event for Sign In button
 $("#signInBTN").on("click", function () {
@@ -35,7 +44,7 @@ $("#signInBTN").on("click", function () {
         var token = result.credential.accessToken;
         // The signed-in user info.
         var user = result.user;
-        localStorage.setItem('name', 'true')
+       
     }).catch(function (error) {
         // Handle Errors here.
         var errorCode = error.code;
@@ -49,6 +58,7 @@ $("#signInBTN").on("click", function () {
 
 
     $("#loginPage").css("display", "none");
+    // $("body").css('background', '#fff');
     $(".container").css("display", "block");
 
 })
@@ -63,7 +73,7 @@ var initApp = function () {
 
     // Track the Auth state across all your pages:
     firebase.auth().onAuthStateChanged(function (user) {
-        if (user || localStorage.getItem('name') === 'true') {
+        if (user) {
             $("#loginPage").css("display", "none");
             $(".container").css("display", "block");
             $("#profilePage").css("display", "block");
@@ -103,12 +113,11 @@ var initApp = function () {
                 });
 
                 if (count === 0) {
-                    $('#account-details').append("<div id='bio'><img src='" + photoURL + "' alt='Profile Photo'><br>" + displayName + "<br>" + email + "<br></div>");
+                    $('#account-details').append("<div id='bio'><b class='text'>"+displayName+"</b><img src='" + photoURL + "' alt='Profile Photo'><br>" + email + "<br></div>");
                 }
 
                 count = 1;
 
-                // on click functions to change display on pages that arent active
                 $("#profileLink").on("click", function () {
                     $("#profilePage").css("display", "block");
                     $("#mapSpace").css("display", "none");
@@ -123,6 +132,7 @@ var initApp = function () {
                     $("#jobsPage").css("display", "none");
                     $("#messagePage").css("display", "none");
                     $("#contactPage").css("display", "none");
+
                 });
 
                 $("#jobsLink").on("click", function () {
@@ -131,8 +141,8 @@ var initApp = function () {
                     $("#jobsPage").css("display", "block");
                     $("#messagePage").css("display", "none");
                     $("#contactPage").css("display", "none");
-                });
 
+                });
                 $("#messagingLink").on("click", function () {
                     $("#profilePage").css("display", "none");
                     $("#mapSpace").css("display", "none");
@@ -140,7 +150,6 @@ var initApp = function () {
                     $("#messagePage").css("display", "block");
                     $("#contactPage").css("display", "none");
                 });
-
                 $("#contactLink").on("click", function () {
                     $("#profilePage").css("display", "none");
                     $("#mapSpace").css("display", "none");
@@ -148,6 +157,7 @@ var initApp = function () {
                     $("#messagePage").css("display", "none");
                     $("#contactPage").css("display", "block");
                 });
+
             });
         } else {
             // User is signed out.
@@ -158,9 +168,8 @@ var initApp = function () {
             $("#jobsPage").css("display", "none");
             $("#messagePage").css("display", "none");
             $("#contactPage").css("display", "none");
-
+            localStorage.setItem("count", "0");
             // Adds login button again
-
 
         }
     }, function (error) {
