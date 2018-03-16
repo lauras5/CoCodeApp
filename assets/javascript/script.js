@@ -52,14 +52,11 @@ $("#signInBTN").on("click", function () {
         var email = error.email;
         // The firebase.auth.AuthCredential type that was used.
         var credential = error.credential;
-
     });
 
-
     $("#loginPage").css("display", "none");
-    // $("body").css('background', '#fff');
+    $("body").css('background', '#fff');
     $(".container").css("display", "block");
-
 })
 
 //  Track the Auth state across all your pages

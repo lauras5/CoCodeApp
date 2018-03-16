@@ -11,16 +11,15 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Coda+Caption:800" rel="stylesheet">
-    <!-- github UI -->
-    <script src="https://cdn.firebase.com/libs/firebaseui/2.6.3/firebaseui.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.6.3/firebaseui.css" />
     <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Roboto+Mono" rel="stylesheet">
+    <!-- github UI -->
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.6.3/firebaseui.css" />
     <title>CoCode App</title>
 </head>
 
 <body>
-
-
+    
+    
     <div id="loginPage" style="display: none;">
         <div class="jumbotron" id='loginJumbo'>
             <h1 id="title">Co-Code</h1>
@@ -28,7 +27,7 @@
             <p style='text-align: center;padding:5px;font-family:"Julius Sans One", cursive;color:white;'>connect . code . create</p>
         </div>
     </div>
-
+    
     <div class="container" style="display: none;">
         <div class="row">
             <div id="mySidenav" class="sidenav">
@@ -39,26 +38,26 @@
                 <p id="messagingLink">Messaging</p>
                 <p id="contactLink">Contact</p>
                 <p id="signOutBTN">Logout</p>
-
+                
             </div>
         </div>
-
+        
         <div class="row">
             <div id="main">
                 <!-- hamburger menu -->
                 <span class="hamburger" style="font-size:30px;cursor:pointer" id="coolButton" onclick="openNav()">&#9776; </span>
             </div>
         </div>
-
+        
         <div id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"></div>
-
-
+        
+        
         <!-- profile page begins -->
         <div id="profilePage" style="display: block;">
             <div class='row' id="account-details"></div>
         </div>
         <!-- profile page ends -->
-
+        
         <!-- map page begins -->
         <div id="mapSpace" class='pageLinks' style="display: none">
             <div class="row">
@@ -82,7 +81,7 @@
                             <label for="radius"> Project Info : </label>
                             <input type="textbox" class="form-control" id="projInfo" placeholder="Explain the project...">
                         </div> -->
-
+                        
                         <button type='submit' value='Encode' id='submitBTN' class="hbtn hb-border-off3">Search</button>
                         <br>
                         <p class='text'> Nearby Locations </p>
@@ -100,7 +99,7 @@
             
         </div>
         <!-- map page ends -->
-
+        
         <!-- job page begins -->
         <div id="jobsPage" class='pageLinks' style="display: none;">
             <div class="row">
@@ -129,7 +128,7 @@
             </div>
         </div>
         <!-- job page ends -->
-
+        
         <!-- message page begins -->
         <div id="messagePage" style="display: none;">
             <div class="row">
@@ -143,19 +142,19 @@
             </div>
         </div>
         <!-- message page ends -->
-
+        
         <!-- <div id="messagePageLocation" style="display: none;">
-                    <div class="row">
-                        <div class="col-md-8">
-                                <div id="chat-messages-location"></div>
-                                <form>
-                                    <input id="chat-input-localion" type="text">
-                                    <button id="chat-send-location">Enter</button>
-                                </form>
-                        </div>
-                    </div>
-                </div> -->
-
+            <div class="row">
+                <div class="col-md-8">
+                    <div id="chat-messages-location"></div>
+                    <form>
+                        <input id="chat-input-localion" type="text">
+                        <button id="chat-send-location">Enter</button>
+                    </form>
+                </div>
+            </div>
+        </div> -->
+        
         <!-- contact page begins -->
         <div id="contactPage" style="display: none;">
             <div class="jumbotron text-center" id="jumbotron">
@@ -200,17 +199,6 @@
                             <a href="https://github.com/ReedChorn" class="card-link">Github</a>
                         </div>
                     </div>
-                    <div class="card" style="width: 15rem; text-align: center;">
-                        <div class="card-body">
-                            <img src="assets/images/matthew-profile-pic.jpg" id="contact-image" class="center">
-                            <h5 class="card-title">Matthew Paulino</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Front-end Development</h6>
-                            <!-- <h6 class="card-subtitle mb-2 text-muted"></h6> -->
-                            <!-- <p class="card-text">info about project responsibilities</p> -->
-                            <p style='font-size: 15px;'>Email : matthewpaulino@gmail.com</p>
-                            <a href="https://github.com/MatthewPaulino" class="card-link">Github</a>
-                        </div>
-                    </div>
                     <br>
                     <br>
                     <div class="row">
@@ -219,24 +207,26 @@
                             meeting spaces for other developers to converge on projects or to just work with others with
                             similar interests. CoCode also allows connection with other users through chat and job search
                             to expand their networks and to collaborate on ambitious projects. </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
-    <!-- jQuery CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-    <!-- Google Maps Init -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOASDIikd8pGiO3vLaVh4bhuhpOr3ZAQY&callback=initMap" async defer></script>
-    <!-- MomentJS -->
-    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-    <!-- JS files -->
-    <script src="./assets/javascript/script.js"></script>
-    <script src="./assets/javascript/messaging.js"></script>
-    <script src="./assets/javascript/javascript-switch-markers.js"></script>
-</body>
-
-</html>
+        
+        <!-- Firebase -->
+        <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+        <!-- jQuery CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+        <!-- Google Maps Init -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOASDIikd8pGiO3vLaVh4bhuhpOr3ZAQY&callback=initMap" async defer></script>
+        <!-- MomentJS -->
+        <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+        <!-- JS files -->
+        <script src="./assets/javascript/script.js"></script>
+        <script src="./assets/javascript/messaging.js"></script>
+        <script src="./assets/javascript/javascript-switch-markers.js"></script>
+        <script src="https://cdn.firebase.com/libs/firebaseui/2.6.3/firebaseui.js"></script>
+    </body>
+    
+    </html>
+    
