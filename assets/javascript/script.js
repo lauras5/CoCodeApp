@@ -44,7 +44,7 @@ $("#signInBTN").on("click", function () {
         // The signed-in user info.
         var user = result.user;
         $("#loginPage").css("display", "none");
-        $("body").css('background', '#fff');
+        $("body").css('background', '../images/profile-background.jpeg');
         $(".container").css("display", "block");
        
     }).catch(function (error) {
@@ -56,7 +56,6 @@ $("#signInBTN").on("click", function () {
         // The firebase.auth.AuthCredential type that was used.
         var credential = error.credential;
     });
-
 })
 
 //  Track the Auth state across all your pages
@@ -153,7 +152,6 @@ var initApp = function () {
                     $("#messagePage").css("display", "none");
                     $("#contactPage").css("display", "block");
                 });
-
             });
         } else {
             // User is signed out.
@@ -166,13 +164,11 @@ var initApp = function () {
             $("#contactPage").css("display", "none");
             localStorage.setItem("count", "0");
             // Adds login button again
-
         }
     }, function (error) {
         console.log(error);
     });
 };
-
 // Event listener for when the page is loaded.
 // Runs the initApp to determine if the user is logged in or not
 window.addEventListener('load', initApp);
