@@ -269,15 +269,6 @@ function initMap() {
                                 contentString
                             });
 
-                          
-//                             $("#messagingLink").on("click", function () {
-//                               $("#profilePage").css("display", "none");
-//                               $("#mapSpace").css("display", "none");
-//                               $("#jobsPage").css("display", "none");
-//                               $("#messagePage").css("display", "block");
-//                               $("#contactPage").css("display", "none");
-//                             });
-
                             // add listener to markers
                             marker.addListener('click', function() {
                                 //opens info window on click
@@ -355,6 +346,7 @@ $('#jobSearchBTN').on('click', function(){
   })
 })
 
+//sidebar
 function openNav() {
   document.getElementById("mySidenav").style.width = "250px";
   document.getElementById("main").style.marginLeft = "250px";
