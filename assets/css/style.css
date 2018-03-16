@@ -63,15 +63,18 @@ img {
   text-shadow: 3px 3px 3px #566a7c;
   font-family: 'Julius Sans One', cursive;
   font-weight: bold;
+  margin-top: 10%;
+  margin-bottom: 26px;
 }
   
 #loginJumbo {
   background-color: rgba(255, 255, 255, 0.75);
   width: 100%;
-  height: 180px;
+  height: 292px;
   display: block;
   margin: auto;
-  margin-top: 10%;
+  margin-top: 0;
+  border-radius: 0;
 }
   
 .hbtn {

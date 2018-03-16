@@ -43,6 +43,9 @@ $("#signInBTN").on("click", function () {
         var token = result.credential.accessToken;
         // The signed-in user info.
         var user = result.user;
+        $("#loginPage").css("display", "none");
+        $("body").css('background', '#fff');
+        $(".container").css("display", "block");
        
     }).catch(function (error) {
         // Handle Errors here.
@@ -54,9 +57,6 @@ $("#signInBTN").on("click", function () {
         var credential = error.credential;
     });
 
-    $("#loginPage").css("display", "none");
-    $("body").css('background', '#fff');
-    $(".container").css("display", "block");
 })
 
 //  Track the Auth state across all your pages
