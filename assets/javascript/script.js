@@ -43,10 +43,7 @@ $("#signInBTN").on("click", function () {
         var token = result.credential.accessToken;
         // The signed-in user info.
         var user = result.user;
-        $("#loginPage").css("display", "none");
-        $("body").css('background-image', 'url(../images/profile-background.jpeg)');
-        $(".container").css("display", "block");
-       
+        
     }).catch(function (error) {
         // Handle Errors here.
         var errorCode = error.code;
@@ -56,6 +53,10 @@ $("#signInBTN").on("click", function () {
         // The firebase.auth.AuthCredential type that was used.
         var credential = error.credential;
     });
+    
+    $("#loginPage").css("display", "none");
+    $("body").css('background-image', 'url(../images/profile-background.jpeg)');
+    $(".container").css("display", "block");
 })
 
 //  Track the Auth state across all your pages
