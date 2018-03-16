@@ -44,7 +44,7 @@ $("#signInBTN").on("click", function () {
         // The signed-in user info.
         var user = result.user;
         $("#loginPage").css("display", "none");
-        $("body").css('background', '../images/profile-background.jpeg');
+        $("body").css('background-image', 'url(../images/profile-background.jpeg)');
         $(".container").css("display", "block");
        
     }).catch(function (error) {
