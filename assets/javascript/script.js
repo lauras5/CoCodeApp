@@ -55,7 +55,7 @@ $("#signInBTN").on("click", function () {
     });
     
     $("#loginPage").css("display", "none");
-    $("body").css('background-image', 'url(../images/profile-background.jpeg)');
+    $("body").css('background-image', 'url(../images/background-image2.jpeg)');
     $(".container").css("display", "block");
 })
 

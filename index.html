@@ -6,14 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./assets/css/reset.css">
+    <!-- Bootstrap CDN -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
+    <!-- My stylesheet -->
     <link rel="stylesheet" href="./assets/css/style.css">
+    <!-- Google Fonts (condense into 1) -->
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Coda+Caption:800" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Julius+Sans+One|Roboto+Mono" rel="stylesheet">
-    <!-- github UI -->
+    <!-- GitHub UI for login-->
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.6.3/firebaseui.css" />
+    <script src="https://cdn.firebase.com/libs/firebaseui/2.6.3/firebaseui.js"></script>
+
     <title>CoCode App</title>
 </head>
 
@@ -24,7 +29,7 @@
         <div class="jumbotron" id='loginJumbo'>
             <h1 id="title">Co-Code</h1>
             <button id='signInBTN' class="hbtn hb-border-off3">Sign In</button>
-            <p style='text-align: center;padding:5px;font-family:"Julius Sans One", cursive;color:white;'>connect . code . create</p>
+            <p style='text-align: center;padding:5px;font-family:"Julius Sans One", cursive;'>connect . code . create</p>
         </div>
     </div>
     
@@ -33,9 +38,9 @@
             <div id="mySidenav" class="sidenav">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <p id="profileLink">Profile</p>
-                <p id="mapLink">Maps</p>
+                <p id="mapLink">Wifi Map Search</p>
                 <p id="jobsLink">Job Search</p>
-                <p id="messagingLink">Messaging</p>
+                <p id="messagingLink">Help Board</p>
                 <p id="contactLink">Contact</p>
                 <p id="signOutBTN">Logout</p>
                 
@@ -211,6 +216,11 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="footer">
+                    <span> &copy; Copyright Team Falu 2018</span>
+                </div>
+            </div>
         </div>
         
         <!-- Firebase -->
@@ -225,7 +235,6 @@
         <script src="./assets/javascript/script.js"></script>
         <script src="./assets/javascript/messaging.js"></script>
         <script src="./assets/javascript/javascript-switch-markers.js"></script>
-        <script src="https://cdn.firebase.com/libs/firebaseui/2.6.3/firebaseui.js"></script>
     </body>
     
     </html>
