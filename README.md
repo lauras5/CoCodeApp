@@ -17,4 +17,10 @@
   <li>switch app to MERN stack</li>
 </ul>
 
+![DEMO](https://user-images.githubusercontent.com/33909888/43423243-bb8278fc-9400-11e8-9376-991075a4bdaa.JPG)
 
+![DEMO](https://user-images.githubusercontent.com/33909888/43423457-589df648-9401-11e8-9816-45bae977a628.JPG)
+
+<p>The app also allows you to join a forum and ask other developers questions about coding.</p>
+
+![DEMO](https://user-images.githubusercontent.com/33909888/43423464-5a9daa1a-9401-11e8-870b-e1edb5b181c7.JPG)
