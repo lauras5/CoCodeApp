@@ -3,7 +3,7 @@
 <h2>Description</h2>
 <p>This app is geared toward remote developers and dev students who need to find a place that has free wifi. It locates places that have free WIFI, are laptop friendly and offer coffee. The user logs in with their GitHub account via the Firebase GitHub AuthO and is also able to search for job opportunities by searching a job name and zip code in the job search page.</p>
 
-<ul> <strong>Built With</strong> 
+<ul> <h3>Built With</h3> 
 
   <li>JavaScript ES6</li>
   <li>jQuery</li>
@@ -13,12 +13,16 @@
 </ul>
 
 
-<ul> <strong>Future Development</strong>
+<ul> <h3>Future Development</h3>
   <li>I would like to add more locations or find an API that offers a list of wifi locations</li>
   <li>Change job search API to Indeed API for job search for more accurate results</li>
   <li>Convert into a MERN stack app</li>
 </ul>
 
+<h3>Contributions</h3>
+<p>Laura Salcido, Breanna Nelson, Rifa Syed, Jordan Novoa</p>
+
+<h3>Images</h3>
 ![DEMO](https://user-images.githubusercontent.com/33909888/43423243-bb8278fc-9400-11e8-9376-991075a4bdaa.JPG)
 
 ![DEMO](https://user-images.githubusercontent.com/33909888/43423457-589df648-9401-11e8-9816-45bae977a628.JPG)
