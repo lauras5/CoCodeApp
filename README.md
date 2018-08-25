@@ -22,7 +22,6 @@
 <h3>Contributions</h3>
 <p>Laura Salcido, Breanna Nelson, Rifa Syed, Jordan Novoa</p>
 
-<h3>Images</h3>
 ![DEMO](https://user-images.githubusercontent.com/33909888/43423243-bb8278fc-9400-11e8-9376-991075a4bdaa.JPG)
 
 ![DEMO](https://user-images.githubusercontent.com/33909888/43423457-589df648-9401-11e8-9816-45bae977a628.JPG)
