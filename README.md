@@ -1,13 +1,15 @@
 <h1>CoCode App</h1>
-
-<h2>Description:</h2>
+<hr/>
+<h2>Description</h2>
 <p>This app is geared toward remote developers and dev students who need to find a place that has free wifi. It locates places that have free WIFI, are laptop friendly and offer coffee. The user logs in with their GitHub account via the Firebase GitHub AuthO and is also able to search for job opportunities by searching a job name and zip code in the job search page.</p>
 
-<p>This app is in JavaScript and uses jQuery and Bootstrap.</p>
-
-<ul> <strong>API's Used:</strong> 
-  <li>GoogleMaps API to find user location and nearby wifi spots</li>
-  <li>Job Search</li>
+<ul> <strong>Built With</strong> 
+<hr/>
+  <li>JavaScript ES6</li>
+  <li>jQuery</li>
+  <li><a href="https://developers.google.com/maps/documentation/">GoogleMaps</a> - API to find user location and nearby wifi spots</li>
+  <li><a href="https://firebase.google.com"/>Firebase</a> - for the authentication and chatroom logic</li> 
+  <li>Job Search - API to search for nearby jobs, takes location from GoogleMaps API</li>
 </ul>
 
 
