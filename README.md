@@ -1,10 +1,10 @@
 <h1>CoCode App</h1>
-<hr/>
+
 <h2>Description</h2>
 <p>This app is geared toward remote developers and dev students who need to find a place that has free wifi. It locates places that have free WIFI, are laptop friendly and offer coffee. The user logs in with their GitHub account via the Firebase GitHub AuthO and is also able to search for job opportunities by searching a job name and zip code in the job search page.</p>
 
 <ul> <strong>Built With</strong> 
-<hr/>
+
   <li>JavaScript ES6</li>
   <li>jQuery</li>
   <li><a href="https://developers.google.com/maps/documentation/">GoogleMaps</a> - API to find user location and nearby wifi spots</li>
@@ -13,10 +13,10 @@
 </ul>
 
 
-<ul> <strong>Future development:</strong>
-  <li>would like to add more locations</li>
-  <li>use indeed API for job search for more accurate results</li>
-  <li>switch app to MERN stack</li>
+<ul> <strong>Future Development</strong>
+  <li>I would like to add more locations or find an API that offers a list of wifi locations</li>
+  <li>Change job search API to Indeed API for job search for more accurate results</li>
+  <li>Convert into a MERN stack app</li>
 </ul>
 
 ![DEMO](https://user-images.githubusercontent.com/33909888/43423243-bb8278fc-9400-11e8-9376-991075a4bdaa.JPG)
